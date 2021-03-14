@@ -1,0 +1,95 @@
+﻿@*https://stackoverflow.com/questions/35355866/vertical-center-align-a-column-in-bootstrap/35355909
+https://codepen.io/shaikmaqsood/pen/XmydxJ
+https://htmlcolorcodes.com/tutorials/html-link-color/
+https://www.rapidtables.com/web/html/link/html-link-new-window.html
+https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+https://www.youtube.com/watch?v=9CY0V0JAgNU*@
+
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/css/styles.css">
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+<div>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var location = { lat: 37.97942, lng: 23.67365 };
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+</div>
+<br>
+
+
+<section class="page-section bg-light" id="team">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="team-member col-md-12">
+                <img class="mx-auto rounded-circle" img src="~/images/SiteImages/Uniwa.png" width="1" height="14" alt="Uniwa">
+                <h4>Πανεπιστήμιο Δυτικής Αττικής</h4>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row wrapper-1">
+                <p style="text-align:center/left/right;">
+                    <a href="https://www.uniwa.gr/en/" target="_blank" style="color:#000000;">Πανεπιστήμιο Δυτικής Αττικής</a>
+                </p>
+            </div>
+            <div class="row wrapper-2">
+                <p style="text-align:center/left/right;">
+                    <a href="http://idpe.uniwa.gr/el/" target="_blank" style="color:#000000;">Τμήμα Μηχανικών Βιομηχανικής Σχεδίασης & Παραγωγής</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="team-member col-md-12">
+                <img class="mx-auto rounded-circle" img src="~/images/TeamIcons/drososCh.png" alt="">
+                <h4>Δρόσος Χρήστος</h4>
+            </div>
+        </div>
+        <div class="col-lg-6 v-center">
+            <div class="row">
+                <p style="text-decoration: underline;">Click the email address to copy :</p> &nbsp;
+                <p hidden id="id1">drososx@uniwa.gr</p>
+                <button class="btn default" onclick="copyToClipboard('#id1')">drososx@uniwa.gr</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col-lg-6 ">
+                <div class="team-member col-md-12">
+                    <img class="mx-auto rounded-circle" img src="~/images/TeamIcons/kritharisCh.jpg" alt="Κρίθαρης Χάρης">
+                    <h4>Κρίθαρης Χάρης</h4>
+                </div>
+            </div>
+            <div class="col-lg-6 v-center">
+                <div class="row">
+                    <p style="text-decoration: underline;">Click the email address to copy :</p> &nbsp;
+                    <p hidden id="id2">harris.kritharis@gmail.com</p>
+                    <button class="btn default" onclick="copyToClipboard('#id2')">harris.kritharis@gmail.com</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

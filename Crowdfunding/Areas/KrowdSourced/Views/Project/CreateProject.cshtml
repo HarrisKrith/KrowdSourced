@@ -1,0 +1,152 @@
+﻿@model Crowdfunding.Models.Project
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Create Project";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row p-3 border">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.ProjectId != 0)
+        {
+            title = "Edit Project";
+            <input type="hidden" asp-for="ProjectId" />
+            <input type="hidden" asp-for="MediaUrl" />
+        }
+
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+
+        <div class="col-8 pt-4">
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Title"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="GoalMoney"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="GoalMoney" class="form-control" />
+                    <span asp-validation-for="GoalMoney" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!--Exp. Date-->
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ExpDate"></label>
+                </div>
+                <div class="col-8">
+                    <input type="date" asp-for="ExpDate" class="form-control" />
+                    <span asp-validation-for="ExpDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Category"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<Crowdfunding.Models.Category>()" class="form-control"></select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-4">
+                    Image
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-8 offset-4">
+                    @if (Model.ProjectId != 0)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control" asp-route-id="@Model.ProjectId">Update </button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div> 
+                    }
+                    else
+                    {
+                    <div class="row">
+
+                        <div class="col">
+                            <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        @if (Model.ProjectId != 0)
+        {
+            <div class="col-3 offset-1 pd-4">
+                <img src="@Model.MediaUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9"/>
+                <a class="btn btn-primary form-control mt-3" asp-area="KrowdSourced" asp-controller="Donation" asp-action="CreateDonation" asp-route-id="@Model.ProjectId">Set up Donation Options </a>
+            </div>
+        }
+
+    </div>
+</form>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/ptkd0cxgcberoylpjjmqzer97tetn56e59g301kd423r01fx/tinymce/5/tinymce.min.js"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+        function validateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal("Error", "Please select an image", "error");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+}
+

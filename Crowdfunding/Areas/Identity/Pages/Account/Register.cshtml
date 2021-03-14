@@ -1,0 +1,72 @@
+﻿@page
+@model RegisterModel
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card ">
+            <header class="card-header">
+
+                @*<a asp-area="Identity" asp-page="/Account/Login" class="float-right btn btn-outline-primary mt-1">Log in</a>*@
+                <h4 class="card-title mt-2">Sign up</h4>
+            </header>
+            <article class="card-body">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div> <!-- form-group end.// -->
+
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>First name </label>
+                            <input asp-for="Input.FirstName" class="form-control" />
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+
+                        </div> <!-- form-group end.// -->
+
+                        <div class="col form-group">
+                            <label>Last name</label>
+                            <input asp-for="Input.LastName" class="form-control" />
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+
+
+                    <div class="form-group">
+                        <label>Date Of Birth</label>
+                        <input class="form-control" type="date" asp-for="Input.DateOfBirth">
+                        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                    </div> <!-- form-group end.// -->
+                    
+                    <div class="form-group">
+                        <label>Create password</label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm password</label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <!-- form-group end.// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                    </div> <!-- form-group// -->
+                    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+                </form>
+            </article> <!-- card-body end .// -->
+            <div class="border-top card-body text-center">Have an account? <a asp-area="Identity" asp-page="/Account/Login">Log In</a></div>
+        </div> <!-- card.// -->
+    </div> <!-- col.//-->
+</div> <!-- row.//-->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

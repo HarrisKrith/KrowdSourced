@@ -1,0 +1,217 @@
+﻿<head>
+    <style>
+        #crap {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="crap" class="clearfix row">
+        <div class="col">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/images/SiteImages/long_carousel_pcGuy.jpg" class="w-100" style="height: 550px" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Start NOW your IDEA!</h5>
+                            <p>It's never too late to start, even start over!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/SiteImages/long_carousel_work.jpg" class="w-100" style="height: 550px" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>The world is at YOUR palm</h5>
+                            <p>You never know when an idea will "hit" you!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/SiteImages/long_carousel_camera.jpg" class="w-100" style="height: 550px" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Capture the world!</h5>
+                            <p>Show others what you Envision!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<br />
+<br />
+<h4>Browse our Categories</h4>
+<br />
+
+
+
+<!--BOTTOM CAROUSEL------------------------------------------------------------------>
+@*https://mdbootstrap.com/snippets/jquery/alexpiffero-it/696600*@
+
+<!--Carousel Wrapper-->
+<div id="carouselHarris" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Fashion">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Fashion.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Fashion</h4>
+                        <p class="card-text">
+                            "I don't design clothes. I design dreams."
+                            <br>- Ralph Lauren
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Film">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Film.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Film</h4>
+                        <p class="card-text">
+                            "Cinema is a matter of what's in the frame and what's out."
+                            <br>- Martin Scorsese
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Games">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Games.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Games</h4>
+                        <p class="card-text">
+                            "If all the year were playing holidays, to sport would be as tedious as to work."
+                            <br>- William Shakespeare
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Journalism">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Journalism.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Journalism</h4>
+                        <p class="card-text">
+                            "The difference between literature and journalism is that journalism is unreadable and literature is not read."
+                            <br>- Oscar Wilde
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/.First slide-->
+        <!--Second slide-->
+        <div class="carousel-item">
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Music">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Music.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Music</h4>
+                        <p class="card-text">
+                            “Without music, life would be a mistake”
+                            <br>- Friedrich Nietzsche
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Publish">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Publish.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Publish</h4>
+                        <p class="card-text">
+                            "There is nothing to writing. All you do is sit down at a typewriter and bleed."
+                            <br>– Ernest Hemingway
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Startup">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Startup.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">StartUp</h4>
+                        <p class="card-text">
+                            "Nothing works better than just improving your product."
+                            <br>- Joel Spolsky, co-founder of Stack Overflow
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2" style="height: 520px;">
+                    <a class="nav-link CarouselLink" asp-controller="Project"
+                       asp-action="ShowByCategory" asp-route-cat="@Crowdfunding.Models.Category.Technology">
+                        <img class="card-img-top"
+                             src="~/images/Categories/Technology.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">Technology</h4>
+                        <p class="card-text">
+                            "Just because something doesn’t do what you planned it to do doesn’t mean it’s useless."
+                            <br>- Thomas Edison
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--/.Second slide-->
+    </div>
+    <!--/.Slides-->
+</div>
+<!--/.Carousel Wrapper-->

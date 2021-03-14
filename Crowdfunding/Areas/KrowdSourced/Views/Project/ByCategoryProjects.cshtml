@@ -1,0 +1,74 @@
+﻿@*https://getbootstrap.com/docs/4.0/components/progress/*@
+
+@model IEnumerable<Crowdfunding.Models.Project>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-sm-4">
+
+                <div class="card" style="background-color:#808080; border:none;">
+
+                    <!--clickable image-->
+                    <a asp-area="KrowdSourced" asp-controller="Project" asp-action="ProjectInfo" asp-route-id="@project.ProjectId">
+                        @if (project.MediaUrl != null)
+                        {
+                            <img src="@project.MediaUrl" class="card-img-top" alt="Creator's media, is missing!">
+                        }
+                        else
+                        {
+                            <img src="~/images/SiteImages/logo6.png" class="card-img-top" alt="...">
+                        }
+                    </a>
+
+                    <!--Rest project's info-->
+                    <ul class="list-group" style="background-color:#808080; border:none;">
+
+                        <!--Title-->
+                        <a asp-area="KrowdSourced" asp-controller="Project" asp-action="ProjectInfo" asp-route-id="@project.ProjectId">
+                            <h5 style="text-decoration: underline; text-align: center; color: black" class="card-title project-title">
+                                @project.Title
+                            </h5>
+                        </a>
+
+                        <!--Dates - START & EXP -->
+                        <div class="text-center">
+                            <span>Created at: @project.DateCreated.ToShortDateString()</span>
+                            <br />
+                            <span>Expires at: @project.ExpDate.ToShortDateString()</span>
+                        </div>
+                        <br />
+
+                        <!--% progress-->
+                        <div class="text-center">
+                            <span>
+                                @if (project.CurrentMoney != 0)
+                                {@(((project.CurrentMoney / project.GoalMoney) * 100).ToString("#.##")) }
+                                else
+                                { @((Convert.ToInt32(project.CurrentMoney)).ToString())}%
+                            </span>
+                            <span class="ml1 normal"> overall progress</span>
+                        </div>
+
+                        <!--Current / Goal-->
+                        <span class="proj-current-money text-center">
+                            @project.CurrentMoney&euro; / @project.GoalMoney&euro; raised
+                        </span>
+
+                    </ul>
+                </div>
+
+                <br />
+                <br />
+
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p> No Projects at this time.</p>
+    <p> Stay Tuned!</p>
+}

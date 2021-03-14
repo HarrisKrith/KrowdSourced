@@ -1,0 +1,32 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<div>
+    <form class="form-signin" id="account" method="post">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger" placeholder="Email address" required autofocus></span>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input asp-for="Input.Password" class="form-control" placeholder="Password" required />
+        <div class="checkbox mb-3">
+            <label>
+                <input asp-for="Input.RememberMe" />
+                @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

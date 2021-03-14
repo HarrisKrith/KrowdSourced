@@ -1,0 +1,147 @@
+﻿li.list-group-item:nth-child(4) > span:nth-child(3) {
+    position: relative;
+    margin-left: 74px;
+}
+
+.card > .list-group {
+    border-top: none;
+    border-bottom: none;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.card-img, .card-img-top, .card-img-bottom {
+    height: 300px;
+}
+
+.bi-clock {
+    margin-bottom: 2px;
+}
+
+.bi-gear {
+    margin-bottom: 3px;
+}
+
+div.card-deck:nth-child(2) {
+    margin-top: 15px;
+}
+
+.CarouselLink {
+    color: #fff;
+    font-size: x-large;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+    .form-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+     .form-signin .form-control:focus {
+         z-index: 2;
+     }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.project-title {
+    font-family: 'Arial', Sans-serif;
+}
+
+.project-description {
+    font-family: 'Arial', Sans-serif;
+}
+
+.proj-current-money {
+    font-family: 'Arial', Sans-serif;
+    font-size: 23px;
+    color: #000000;
+}
+.carousel-img {
+    height: 550px;
+    object-fit:contain
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+#CategoriesSelect {
+    background-color: #6c757d;
+    color: white;
+}
+
+.central {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+h4 {
+    text-align: center;
+}

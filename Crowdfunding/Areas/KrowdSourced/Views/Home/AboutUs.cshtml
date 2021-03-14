@@ -1,0 +1,78 @@
+﻿<link rel="stylesheet" type="text/css" href="~/css/styles.css">
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading">Meet the Team</h2>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-12">
+                    @*C:\Users\xaris\Desktop\Thesis Vol.4\CrowdfundingWebApp\wwwroot\images\TeamIcons\drososCh.png*@
+                    <div class="team-member col-md-12">
+                        <img class="mx-auto rounded-circle" img src="~/images/SiteImages/Uniwa.png" width="1" height="14" alt="Uniwa">
+                        <h4>University of West Attica</h4>
+                        <p @*class="text-muted"*@>Department of Industrial Design & Production Engineering</p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                @*<button type="button" onclick="parent.open('https://www.uniwa.gr/en/')" class="btn btn-danger">Uniwa</button>*@
+                                <button type="button" onclick="parent.open('http://idpe.uniwa.gr/en/')" class="btn btn-danger">Idpe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        @*C:\Users\xaris\Desktop\Thesis Vol.4\CrowdfundingWebApp\wwwroot\images\TeamIcons\drososCh.png*@
+                        <div class="team-member col-md-12">
+                            <img class="mx-auto rounded-circle" img src="~/images/TeamIcons/drososCh.png" alt="">
+                            <h4>Δρόσος Χρήστος</h4>
+                            <p @*class="text-muted"*@>Εργαστηριακό Διδακτικό Προσωπικό (ΕΔΙΠ)</p>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @*<button type="button" onclick="parent.open('https://www.linkedin.com/in/harris-kritharis')" class="btn btn-danger">LinkedIn</button>*@
+                                    <button type="button" onclick="parent.open('http://www.idpe.uniwa.gr/el/academic-staff/lab-teaching-staff')" class="btn btn-danger"> Uniwa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="team-member col-md-12">
+                            <img class="mx-auto rounded-circle" img src="~/images/TeamIcons/kritharisCh.jpg" alt="Κρίθαρης Χάρης">
+                            <h4>Κρίθαρης Χάρης</h4>
+                            <p @*class="text-muted"*@>Junior Software Engineer</p>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button type="button" onclick="parent.open('https://www.linkedin.com/in/harris-kritharis')" class="btn btn-danger"><i class="fa fa-linkedin"></i></button>
+                                    <button type="button" onclick="parent.open('https://github.com/HarrisKrith')" class="btn btn-danger"><i class="fa fa-github"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

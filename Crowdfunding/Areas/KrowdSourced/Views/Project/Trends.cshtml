@@ -1,0 +1,145 @@
+﻿@model Crowdfunding.ViewModels.TrendsViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="row">
+    <div class="col-4">
+        <h3> Check out what's hot:</h3>
+    </div>
+
+    <!----------------------    Based On Button    ---------------------------->
+    <div class="col-8">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Order by
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item js-donations" href="#">Descending Donations</a>
+                <a class="dropdown-item js-trendsByCategory-item" href="#">Category</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------------------     Category Selection Button     ------------------>
+<div class="row">
+    <div class="col align-content-center">
+        <br />
+        <select id="CategoriesSelect" class="form-control mt-2 js-category-selection-btn col-md-2">
+
+            @foreach (var item in Enum.GetValues(typeof(Crowdfunding.Models.Category)))
+            {
+                <option id="@item">@item</option>
+            }
+
+        </select>
+    </div>
+    <br />
+</div>
+
+<span id="allCategories">
+    <br />
+    <span id="Fashion2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Fashion).ToList())
+    </span>
+    <span id="Film2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Film).ToList())
+    </span>
+    <span id="Games2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Games).ToList())
+    </span>
+    <span id="Journalism2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Journalism).ToList())
+    </span>
+    <span id="Music2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Music).ToList())
+    </span>
+    <span id="Publish2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Publish).ToList())
+    </span>
+    <span id="Startup2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Startup).ToList())
+    </span>
+    <span id="Technology2" style="display:none">
+        @Html.Partial("ByCategoryProjects", Model.TrendsAmountDonated.ToList().Where(u => u.Category == Crowdfunding.Models.Category.Technology).ToList())
+    </span>
+
+</span>
+
+
+<!-----------------     Sort Projects By Donations     ------------------->
+@if (Model.TrendsAmountDonated.Any())
+{
+    <div class="container js-donations-trending">
+
+        <div class="row">
+
+            @foreach (var project in Model.TrendsAmountDonated)
+            {
+                <div class="col-sm-4">
+
+                    <div class="card" style="background-color:#808080;">
+
+                        <!--clickable image-->
+                        <a asp-area="KrowdSourced" asp-controller="Project" asp-action="ProjectInfo" asp-route-id="@project.ProjectId">
+                            @if (project.MediaUrl != null)
+                            {
+                                <img src="@project.MediaUrl" class="card-img-top" alt="Creator's media, is missing!">
+                            }
+                            else
+                            {
+                                <img src="~/images/SiteImages/logo6.png" class="card-img-top" alt="...">
+                            }
+                        </a>
+
+                        <!--Rest project's info-->
+                        <ul class="list-group" style="background-color:#808080; border:none;">
+
+                            <!--Title-->
+                            <a asp-area="KrowdSourced" asp-controller="Project" asp-action="ProjectInfo" asp-route-id="@project.ProjectId">
+                                <h5 style="text-decoration: underline; text-align: center; color: black" class="card-title project-title">
+                                    @project.Title
+                                </h5>
+                            </a>
+
+                            <!--Dates - START & EXP -->
+                            <div class="text-center">
+                                <span>Created at: @project.DateCreated.ToShortDateString()</span>
+                                <br />
+                                <span>Expires at: @project.ExpDate.ToShortDateString()</span>
+                            </div>
+                            <br />
+
+                            <!--% progress-->
+                            <div class="text-center">
+                                <span>
+                                    @if (project.CurrentMoney != 0)
+                                    {@(((project.CurrentMoney / project.GoalMoney) * 100).ToString("#.##")) }
+                                    else
+                                    { @((Convert.ToInt32(project.CurrentMoney)).ToString())}%
+                                </span>
+                                <span class="ml1 normal"> overall progress</span>
+                            </div>
+
+                            <!--Current / Goal-->
+                            <span class="proj-current-money text-center">
+                                @project.CurrentMoney&euro; / @project.GoalMoney&euro; raised
+                            </span>
+
+                        </ul>
+                    </div>
+
+                    <br />
+                    <br />
+
+                </div>
+            }
+        </div>
+
+    </div>
+}
+else
+{
+    <p> No Projects at this time.</p>
+    <p> Stay Tuned!</p>
+}

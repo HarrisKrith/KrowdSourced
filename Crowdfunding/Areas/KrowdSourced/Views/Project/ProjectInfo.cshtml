@@ -1,0 +1,134 @@
+@*https://developer.paypal.com/docs/paypal-payments-standard/integration-guide/html-example-donate/#basic-donate-button*@
+
+@model Crowdfunding.Models.Project
+
+<head>
+    <style>
+/*        .card
+        .img-fluid {
+            background: url(~/wwwroot/images/SiteImages/pp258.png) no-repeat !important;
+            background-position: center;
+            background-size: cover;
+        }
+*/    </style>    
+</head>
+
+<span><b>@Model.Title</b></span>
+
+<br />
+<br />
+
+<div class="row ">
+
+    <div class="col-9">
+
+        <div>
+            @if (Model.MediaUrl != null)
+            {
+                <img src="@Model.MediaUrl" class="card-img-top" alt="User's image">
+            }
+            else
+            {
+                <img src="~/images/SiteImages/logo6.png" class="card-img-top" alt="...">
+            }
+        </div>
+
+        <!--Tabs-->
+        <!--https://getbootstrap.com/docs/4.6/components/navs/#tabs-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab">Project's Description</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab">Additional information</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="card-text"><u>Project's target is set at:</u> <b>@Model.GoalMoney &euro;</b></p>
+                        <p class="card-text"><u>Project started at:</u> <b>@Model.DateCreated</b></p>
+                        <p class="card-text"><u>Project ends at:</u> <b>@Model.ExpDate</b></p>
+                        <br />  
+                        <br />  
+                        <p class="card-text"><u>Project's creator is:</u> <b>@Model.UserCreator.FirstName @Model.UserCreator.LastName</b></p>
+                        <p class="card-text"><u>Contact:</u> <b>@Model.UserCreator.Email</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <!--<ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Description</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>-->
+
+
+    </div>
+
+    <!--Donation options-->
+    @if (Model.Donations.Any())
+    {
+        <div class="col-3">
+
+            <span id="project_id" data-Project-id="@Model.ProjectId"></span>
+            @foreach (var donation in Model.Donations)
+            {
+                <span class="donation_id mt-2" data-donating-id="@donation.DonationId"></span>
+
+                <div class="card" style="background-color:#6c757d">
+                    <img class="card-img" src="~/images/SiteImages/pp258.png" alt="" />
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-center" style="color:aliceblue">@donation.Name</h5>
+                        <p class="card-text text-center" style="color:aliceblue">@donation.Description</p>
+                        <br />
+                        <p class="card-text text-center " style="color:aliceblue"><b>@donation.Price &euro;</b></p>
+                        <center>
+                            <button type="button" onclick="parent.open('https://developer.paypal.com/docs/paypal-payments-standard/integration-guide/html-example-donate/#basic-donate-button')" data-donating-id="@donation.DonationId" class="btn btn-success mt-2 @donation.DonationId donation-button"> Donate</button>
+                        </center>
+                    </div>
+                </div>
+                <br/>
+
+            }
+        </div>
+    }
+    else
+    {
+        <div class="col-3">
+            No Donations Set. 
+            <br/>
+            YET!
+            <br/>
+            <br/>
+            <img src="https://media.giphy.com/media/joV1k1sNOT5xC/giphy.gif" />
+        </div>
+    }
+</div>
